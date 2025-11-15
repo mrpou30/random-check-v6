@@ -1,0 +1,198 @@
+/* =============== RESET =============== */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f1f5fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 30px;
+  
+}
+
+/* =============== HEADER =============== */
+.app-header {
+  background: #ff6b00;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+#status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: red;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+
+/* =============== CONTAINER =============== */
+.container {
+  flex: 1;
+  padding: 20px;
+  max-width: 480px;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  font-weight: 600;
+  color: #444;
+}
+
+input, textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #f1f5fb;
+  box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #fff;
+  font-size: 1rem;
+  outline: none;
+  color: #333;
+}
+
+#keterangan {
+  margin-bottom: 12px;
+}
+
+input[readonly], textarea[readonly] {
+  background: #e9eef5;
+  color: #666;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 4px;
+  display: block;
+}
+
+/* =============== BUTTONS =============== */
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #f1f5fb;
+  box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #fff;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #e0e6f1;
+}
+
+button:active {
+  box-shadow: inset 3px 3px 6px #c1c9d6, 
+  inset -3px -3px 6px #fff;
+}
+
+/* =============== FOOTER =============== */
+#status-bar {
+  background: #ff6b00;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* 🔸 Loading Overlay */
+#loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.loader-box {
+  text-align: center;
+  color: #333;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #ff6b00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 💬 Alert Box */
+.alert-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #f1f5fb;
+  box-shadow: 6px 6px 12px #cbd2e0, -6px -6px 12px #fff;
+  border-radius: 16px;
+  padding: 16px 28px;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+.alert-box.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.alert-box.success { border-left: 6px solid #27ae60; color: #27ae60; }
+.alert-box.error { border-left: 6px solid #e74c3c; color: #e74c3c; }
+.alert-box.info { border-left: 6px solid #2980b9; color: #2980b9; }

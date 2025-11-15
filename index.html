@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Opname System - by mrpou</title>
+
+  <!-- Warna tema untuk PWA -->
+  <meta name="theme-color" content="#1976d2" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- CSS -->
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <img src="tiggi.png" alt="tiggi" style="width: 32px; height: 40px;">
+    <h4><b>Stock Opname System V 6.1</b><p><i><small>T305 - LW Alam Sutera</small></i></h4>
+    
+    <div id="user-info-header" style="font-size: 0.75rem; text-alignt: right; margin-right: 10px; line-height: 1.2;"></div>
+
+    <div id="status-dot" title="Status koneksi"></div>
+  </header>
+
+  <!-- Container Utama -->
+  <main class="container">
+      <!-- Input Barcode -->
+  <label for="input-upc">Barcode / Article</label>
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <input type="text" inputmode="numeric" id="input-upc" placeholder="Ketik atau scan barcode" style="flex: 1;" />
+    <button id="btn-scan" title="Scan Barcode" style="padding: 10px;">📷</button>
+  </div>
+  
+  <!-- Box Scanner -->
+  <div id="scanner-box" style="display:none; margin-top:15px; background:#fff; padding:12px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.15);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <strong>📸 Scan Barcode</strong>
+      <button id="btn-close-scan" style="background:#ff6b00; color:white; border:none; padding:4px 8px; border-radius:6px;">Tutup</button>
+    </div>
+    <div id="scanner" style="width:100%; border-radius:10px; overflow:hidden;"></div>
+  </div>
+    
+
+    <!-- Hasil Lookup -->
+    <label for="article">Article</label>
+    <input type="text" id="article" readonly />
+
+    <label for="desc">Deskripsi</label>
+    <textarea id="desc" rows="2" readonly></textarea>
+
+    <label for="qty-sistem">Qty Sistem</label>
+    <input type="text" id="qty-sistem" readonly />
+    <small id="sloc" class="hint">SLOC: -</small>
+
+    <label >Harga</label>
+    <input type="number" id="harga" readonly />
+
+    <!-- Input Fisik -->
+    <label for="qty-fisik">Qty Fisik</label>
+    <input type="number" id="qty-fisik" placeholder="Input Fisik" />
+    
+     <!-- Keterangan -->
+    <label for="keterangan">Keterangan</label>
+    <textarea id="keterangan" rows="2" placeholder="Tulis keterangan (opsional)..."></textarea>
+
+    <!-- Tombol Aksi -->
+    <div class="button-group">
+      <button type="button" id="btn-save">💾 Simpan</button>
+      <button id="btn-view">📋 Lihat Data</button>
+      <button id="btn-upload-spreadsheet">☁️ Upload</button>
+      <button onclick="openUpdateMasterModal()" id="btn-master">🔄 Update Master</b>
+      <button id="btn-history" type="button">📜 History</button>
+      <button id="btn-validasi" class="btn-warning">🔍 Validasi</button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="status-bar">
+  </footer>
+
+  <!-- JS -->
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
