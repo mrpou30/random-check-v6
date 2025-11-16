@@ -497,7 +497,6 @@ async function updateMasterFromServer() {
     const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
     const linkAdmin = userInfo.linkAdmin;
     if (!linkAdmin) throw new Error("linkAdmin tidak ditemukan di userInfo");
-    if (!linkAdmin) throw new Error("linkAdmin tidak ditemukan");
 
     const url = `${APP_SCRIPT_URL}?linkAdmin=${encodeURIComponent(linkAdmin)}`;
     
