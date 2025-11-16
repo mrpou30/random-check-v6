@@ -501,12 +501,7 @@ async function updateMasterFromServer() {
 
     const url = `${APP_SCRIPT_URL}?linkAdmin=${encodeURIComponent(linkAdmin)}`;
     
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+    const res = await fetch(url);
     
     const data = await res.json();
     const normalized = normalizeRows(Array.isArray(data) ? data : data.data || []);
